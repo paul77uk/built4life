@@ -84,3 +84,4 @@ production:
   database: built4life_production
   username: built4life
   password: <%= ENV["BUILT4LIFE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
