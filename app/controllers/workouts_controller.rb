@@ -14,9 +14,10 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = Workout.new(workout_params)
-    @workout.user = current_user
+    @workout.user_id = current_user.id
 
-    if @workout.save
+    if @workout.valid?
+      @workout.save
       redirect_to workouts_path, notice: 'Workout was successfully created.'
     else
       render :new, status: :unprocessable_entity
