@@ -7,6 +7,5 @@ class Workout < ApplicationRecord
   # after_update_commit -> { broadcast_replace_later_to "workouts" }
   # after_destroy_commit -> { broadcast_remove_to "workouts" }
   # Those three callbacks are equivalent to the following single line
-  broadcasts_to ->(_workout) { 'workouts' }, inserts_by: :prepend
   belongs_to :user
 end

@@ -1,4 +1,4 @@
-<%= turbo_stream.prepend "workouts", @workout %>
+<%= turbo_stream.append "workouts", @workout %>
 
 <%= turbo_stream.update Workout.new, "" %>
 <%= render_turbo_stream_flash_messages %>

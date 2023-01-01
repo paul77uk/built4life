@@ -8,7 +8,7 @@
     <% end %>
     <div class="flex gap-4">
       <div class="flex-grow">
-        <%= f.text_field :name, placeholder: 'Name of your workout',
+        <%= f.text_field :name, autofocus: true, placeholder: 'Name of your workout',
         id: 'Name', class: "border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2" %>
       </div>
       <div>
@@ -17,8 +17,10 @@
         <% end %>
       </div>
       <div>
-        <%= button_tag type: 'submit', id: 'submit' do %>
-          <i class="fa-solid fa-check text-white bg-green-600 p-3 fa-xl rounded-md hover:bg-green-500"></i>
+        <%= turbo_frame_tag "workouts" do %>
+          <%= button_tag type: 'submit', id: 'submit' do %>
+            <i class="fa-solid fa-check text-white bg-green-600 p-3 fa-xl rounded-md hover:bg-green-500"></i>
+          <% end %>
         <% end %>
       </div>
     </div>

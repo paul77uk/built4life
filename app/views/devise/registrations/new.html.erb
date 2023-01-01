@@ -1,29 +1,31 @@
-<h2>Sign up</h2>
+<div class="flex flex-col items-center justify-center mt-10">
+<h1 class="text-3xl font-semibold text-gray-700">Sign up</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, class: "block text-gray-700 mb-1" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email", class: "border border-gray-300 p-2 rounded-md mb-4" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, class: "block text-gray-700 mb-1" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Enter your password", class: "border border-gray-300 p-2 rounded-md mb-4" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm your password", class: "border border-gray-300 p-2 rounded-md mb-4" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "bg-red-700 hover:bg-red-600 text-white text-lg py-1 rounded-md w-full my-3" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

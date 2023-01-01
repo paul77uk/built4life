@@ -9,21 +9,22 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-
-    <nav class="flex justify-between border-b border-gray-300 shadow-md py-3 px-5 items-center">
-      <div class="font-bold text-2xl">-<span class="text-red-700 text-3xl">||</span>-<span class="">Built</span>-<span class="">4</span>-<span class="">Life</span>-<span class="text-red-700 text-3xl">||</span>-</div>
+    <%# <body class=" bg-orange-50"> %>
+    <nav class="flex justify-between border-b border-gray-300 shadow-lg py-4 px-5 items-center text-gray-800">
+      <div class="font-bold text-2xl">Built4Life</div>
       <% if user_signed_in? %>
-        <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
+        <div class="font-semibold text-lg">
+          <%= current_user.email %>
+          <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class: "bg-gray-900 hover:bg-gray-700 text-white py-3 px-5 rounded-md ml-2" %>
+        </div>
       <% else %>
-        <%= link_to 'Sign in', new_user_session_path %>
+        <%= link_to 'Sign in', new_user_session_path, class: "bg-gray-900 hover:bg-gray-700 text-white py-3 px-5 rounded-md ml-2" %>
       <% end %>
     </nav>
-
-    <main class="container mx-auto mt-10 px-5">
+    <main class="mx-5">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
-
   </body>
 </html>

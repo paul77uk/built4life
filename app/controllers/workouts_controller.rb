@@ -3,7 +3,7 @@ class WorkoutsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @workouts = Workout.where(user_id: current_user.id)
+    @workouts = Workout.where(user_id: current_user.id).order(:created_at)
   end
 
   def show; end
@@ -16,9 +16,8 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
 
-    if @workout.valid?
-      @workout.save
-      redirect_to workouts_path, notice: 'Workout was successfully created.'
+    if @workout.save
+      redirect_to workout_path(@workout)
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +27,7 @@ class WorkoutsController < ApplicationController
 
   def update
     if @workout.update(workout_params)
-      redirect_to workouts_path, notice: 'Workout was successfully updated.'
+      redirect_to workouts_path
     else
       render :edit, status: :unprocessable_entity
     end
