@@ -1,8 +1,5 @@
-<%= turbo_frame_tag workout do %>
-  <div class="flex justify-between border shadow-md mb-4 py-3 px-5 items-center rounded-lg">
-    <div>
-      <%= link_to workout.name, workout_path(workout),class: "text-red-700 text-lg hover:text-red-600" %>
-    </div>
-
+<div class="flex justify-between border shadow-md mb-4 py-3 px-5 items-center rounded-lg">
+  <div>
+    <%= link_to workout.name, workout_path(workout),class: "text-red-700 text-lg hover:text-red-600" %>
   </div>
-<% end %>
+</div>

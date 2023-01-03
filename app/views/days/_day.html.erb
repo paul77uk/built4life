@@ -1,8 +1,5 @@
 <%= day.title %>
-<%= button_to "Delete",
-                    [workout, day],
-                    method: :delete,
-                    class: "" %>
+<%= button_to "Delete", workout_day_path(workout, day), method: :delete, class: "" %>
 <%= link_to "Edit",
                   [:edit, workout, day],
                   class: "" %>
