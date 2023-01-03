@@ -6,9 +6,4 @@
                   class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
   </div>
 
-  <%= turbo_frame_tag Workout.new %>
-
-  <%= turbo_frame_tag "workouts" do %>
     <%= render @workouts %>
-  <% end %>
-  

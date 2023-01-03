@@ -1,4 +1,4 @@
-<%= link_to sanitize("&larr; Back to workouts"), workouts_path, class: "text-red-700 text-lg hover:text-red-600" %>
+<%= link_to sanitize("&larr; Back to workouts"), workouts_path, class: "text-red-700 text-lg hover:text-red-600 mt-2" %>
 <div class="flex flex-wrap items-center justify-between mb-10 gap-2 max-[320px]:justify-evenly">
 </div>
 <div class="flex justify-between border shadow-md mb-4 py-3 px-5 items-center rounded-lg">
@@ -14,3 +14,8 @@
     <% end %>
   </div>
 </div>
+<%= link_to "New Day",
+                new_workout_day_path(@workout),
+                class: "" %>
+
+<%= render @days, workout: @workout %>

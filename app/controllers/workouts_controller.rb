@@ -6,7 +6,9 @@ class WorkoutsController < ApplicationController
     @workouts = Workout.where(user_id: current_user.id).order(:created_at)
   end
 
-  def show; end
+  def show
+    @days = @workout.days.order(:created_at)
+  end
 
   def new
     @workout = Workout.new
@@ -27,7 +29,7 @@ class WorkoutsController < ApplicationController
 
   def update
     if @workout.update(workout_params)
-      redirect_to workouts_path
+      redirect_to workout_path(@workout)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,10 +38,7 @@ class WorkoutsController < ApplicationController
   def destroy
     @workout.destroy
 
-    respond_to do |format|
-      format.html { redirect_to workouts_path, notice: 'Workout was successfully destroyed.' }
-      format.turbo_stream
-    end
+    redirect_to workouts_path(@workout)
   end
 
   private

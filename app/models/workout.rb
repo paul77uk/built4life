@@ -8,4 +8,5 @@ class Workout < ApplicationRecord
   # after_destroy_commit -> { broadcast_remove_to "workouts" }
   # Those three callbacks are equivalent to the following single line
   belongs_to :user
+  has_many :days, dependent: :destroy
 end

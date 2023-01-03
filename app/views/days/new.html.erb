@@ -1,0 +1,8 @@
+
+  <%= link_to sanitize("&larr; Back to workout"), workout_path(@workout) %>
+
+
+    <h1>New day</h1>
+  
+
+  <%= render "form", workout: @workout, day: @day %>
