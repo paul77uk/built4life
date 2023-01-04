@@ -1,9 +1,9 @@
   <%# turbo_stream_from "workouts" %>
-  <div class="flex flex-wrap items-center justify-between mt-16 mb-10 gap-2 max-[320px]:justify-evenly">
-    <h1 class="text-4xl font-bold">Workouts</h1>
-    <%= link_to "New workout",
+<div class="flex flex-wrap items-center justify-between mt-16 mb-10 gap-2 max-[320px]:justify-evenly">
+  <h1 class="text-4xl font-bold">Workouts</h1>
+ 
+  <%= link_to "New workout",
                   new_workout_path,
                   class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
-  </div>
-
-    <%= render @workouts %>
+</div>
+<%= render @workouts %>

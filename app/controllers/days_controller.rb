@@ -10,7 +10,10 @@ class DaysController < ApplicationController
     @day = @workout.days.build(day_params)
 
     if @day.save
-      redirect_to workout_path(@workout), notice: 'Day was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to workout_path(@workout), notice: 'Day was successfully created.' }
+        format.turbo_stream { flash.now[:notice] = 'Day was successfully created.' }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,7 +23,10 @@ class DaysController < ApplicationController
 
   def update
     if @day.update(day_params)
-      redirect_to workout_path(@workout), notice: 'Day was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to workout_path(@workout), notice: 'Day was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Day was successfully updated.' }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,7 +35,10 @@ class DaysController < ApplicationController
   def destroy
     @day.destroy
 
-    redirect_to workout_path(@workout)
+    respond_to do |format|
+      format.html { redirect_to workout_path(@workout), notice: 'Day was successfully destroyed.' }
+      format.turbo_stream { flash.now[:notice] = 'Day was successfully destroyed.' }
+    end
   end
 
   private

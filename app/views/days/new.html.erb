@@ -1,18 +1,18 @@
-
-  <%= link_to sanitize("&larr; Back to workout"), workout_path(@workout) %>
-
-
-    <h1>New day</h1>
-  
-
+<%= link_to sanitize("&larr; Back to workout"), workout_path(@workout) %>
+<h1>New day</h1>
+<%= turbo_frame_tag @day do %>
   <%= form_with(model: [@workout, @day]) do |f| %>
-  <% if @day.errors.any? %>
-    <div class="error-message">
-      <%= @day.errors.full_messages.to_sentence.capitalize %>
-    </div>
+    <% if @day.errors.any? %>
+      <div class="error-message">
+        <%= @day.errors.full_messages.to_sentence.capitalize %>
+      </div>
+    <% end %>
+    <%= f.text_field :title, autofocus: true %>
+    <%= link_to workout_path(@workout) do %>
+      <i class="fa-solid fa-arrow-rotate-left fa-xl bg-gray-200 rounded-md p-3 hover:bg-gray-300"></i>
+    <% end %>
+    <%= button_tag type: 'submit' do %>
+      <i class="fa-solid fa-check text-white bg-green-600 p-3 fa-xl rounded-md hover:bg-green-500"></i>
+    <% end %>
   <% end %>
-
-  <%= f.text_field :title, autofocus: true %>
-  <%= link_to "Cancel", workout_path(@workout), class: "" %>
-  <%= f.submit class: "" %>
 <% end %>

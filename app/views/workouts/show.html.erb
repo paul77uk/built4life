@@ -1,5 +1,4 @@
 <%= link_to sanitize("&larr; Back to workouts"), workouts_path, class: "text-red-700 text-lg hover:text-red-600 mt-2" %>
-
 <div class="flex flex-wrap items-center justify-between mb-10 gap-2 max-[320px]:justify-evenly">
 </div>
 <div class="flex justify-between border shadow-md mb-4 py-3 px-5 items-center rounded-lg">
@@ -15,7 +14,12 @@
     <% end %>
   </div>
 </div>
-<%= link_to "New Day",
-                new_workout_day_path(@workout),
-                class: "" %>
-<%= render @days, workout: @workout %>
+<%= button_to "Add Day", workout_days_path(@workout, @day),
+                data: { turbo_frame: dom_id(Day.new) },
+                class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
+
+<%= turbo_frame_tag Day.new %>
+
+<%= turbo_frame_tag "days" do %>
+  <%= render @days, workout: @workout %>
+<% end %>
