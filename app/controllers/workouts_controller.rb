@@ -19,7 +19,10 @@ class WorkoutsController < ApplicationController
     @workout.user_id = current_user.id
 
     if @workout.save
-      redirect_to workout_path(@workout)
+      respond_to do |format|
+        format.html { redirect_to workouts_path, notice: 'Quote was successfully created.' }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +32,10 @@ class WorkoutsController < ApplicationController
 
   def update
     if @workout.update(workout_params)
-      redirect_to workout_path(@workout)
+      respond_to do |format|
+        format.html { redirect_to workouts_path, notice: 'Workout was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Workout was successfully updated.' }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,13 +44,16 @@ class WorkoutsController < ApplicationController
   def destroy
     @workout.destroy
 
-    redirect_to workouts_path(@workout)
+    respond_to do |format|
+      format.html { redirect_to workouts_path, notice: 'Workout was successfully destroyed.' }
+      format.turbo_stream
+    end
   end
 
   private
 
   def set_workout
-    @workout = Workout.find(params[:id])
+    @workout = current_user.workouts.find(params[:id])
   end
 
   def workout_params

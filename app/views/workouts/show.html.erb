@@ -1,25 +1,13 @@
 <%= link_to sanitize("&larr; Back to workouts"), workouts_path, class: "text-red-700 text-lg hover:text-red-600 mt-2" %>
-<div class="flex flex-wrap items-center justify-between mb-10 gap-2 max-[320px]:justify-evenly">
-</div>
-<div class="flex justify-between border shadow-md mb-4 py-3 px-5 items-center rounded-lg">
-  <h1 class="text-4xl font-bold w-full text-center">
+<div class="flex justify-between my-4 py-3 items-center">
+  <h1 class="text-4xl font-bold">
     <%= @workout.name %>
   </h1>
-  <div class="flex gap-2">
-    <%= button_to workout_path(@workout), method: :delete, id: 'Delete', class: "bg-gray-200 py-2 px-3 rounded-md hover:bg-gray-300" do %>
-      <i class="fa-regular fa-trash-can fa-xl"></i>
-    <% end %>
-    <%= link_to edit_workout_path(@workout), id: 'Edit', class: "bg-gray-200 py-2 px-3 rounded-md hover:bg-gray-300" do %>
-      <i class="fa-regular fa-pen-to-square fa-xl"></i>
-    <% end %>
-  </div>
-</div>
-<%= button_to "Add Day", workout_days_path(@workout, @day),
+  <%= button_to "Add Day", workout_days_path(@workout, @day),
                 data: { turbo_frame: dom_id(Day.new) },
                 class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
-
+</div>
 <%= turbo_frame_tag Day.new %>
-
 <%= turbo_frame_tag "days" do %>
   <%= render @days, workout: @workout %>
 <% end %>

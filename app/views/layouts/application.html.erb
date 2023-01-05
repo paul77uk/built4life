@@ -16,7 +16,7 @@
       <% if user_signed_in? %>
         <div class="flex font-semibold text-lg items-center gap-2">
           <%= current_user.email %>
-          <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: "bg-gray-900 hover:bg-gray-700 text-white py-3 px-5 rounded-md ml-2" %>
+          <%= button_to 'Sign out', destroy_user_session_path, method: :delete, data: { turbo: false }, class: "bg-gray-900 hover:bg-gray-700 text-white py-3 px-5 rounded-md ml-2" %>
         </div>
       <% else %>
         <%= link_to 'Sign in', new_user_session_path, class: "bg-gray-900 hover:bg-gray-700 text-white py-3 px-5 rounded-md ml-2" %>
