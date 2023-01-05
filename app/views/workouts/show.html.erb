@@ -3,7 +3,7 @@
   <h1 class="text-4xl font-bold">
     <%= @workout.name %>
   </h1>
-  <%= button_to "Add Day", workout_days_path(@workout, @day),
+  <%= link_to "Add Day", new_workout_day_path(@workout),
                 data: { turbo_frame: dom_id(Day.new) },
                 class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
 </div>

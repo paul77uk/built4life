@@ -1,5 +1,7 @@
 <%= link_to sanitize("&larr; Back to workout"), workout_path(@workout) %>
+
 <h1>New day</h1>
+
 <%= turbo_frame_tag @day do %>
   <%= form_with(model: [@workout, @day]) do |f| %>
     <% if @day.errors.any? %>
