@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :workouts
 
   resources :workouts do
-    resources :days, except: %i[index show]
+    resources :days, except: %i[index] do
+      resources :exercises, except: %i[index]
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

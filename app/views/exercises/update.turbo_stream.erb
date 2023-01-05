@@ -1,0 +1,10 @@
+<%= turbo_stream.remove @exercise %>
+
+<%# Step 2: insert the updated date at the correct position %>
+
+  <%= turbo_stream.append "exercises" do %>
+    <%= render @exercise, workout: @workout, day: @day %>
+  <% end %>
+
+
+<%# <%= render_turbo_stream_flash_messages %> 

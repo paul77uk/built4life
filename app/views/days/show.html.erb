@@ -1,0 +1,12 @@
+<%= link_to sanitize("&larr; Back to days"), workout_path(@workout), class: "text-red-700 text-lg hover:text-red-600 mt-2" %>
+<div class="flex justify-between my-4 py-3 items-center">
+  <h1 class="text-4xl font-bold">
+    <%= @day.title %>
+  </h1>
+  <%= link_to "Add Exercise", new_workout_day_exercise_path(@workout, @day), data: { turbo_frame: dom_id(Exercise.new) },
+                class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
+</div>
+<%= turbo_frame_tag Exercise.new %>
+<%= turbo_frame_tag "exercises" do %>
+  <%= render @exercises %>
+<% end %>

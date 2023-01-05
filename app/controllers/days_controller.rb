@@ -1,9 +1,13 @@
 class DaysController < ApplicationController
   before_action :set_workout
-  before_action :set_day, only: %i[edit update destroy]
+  before_action :set_day, only: %i[edit update destroy show]
 
   def new
     @day = @workout.days.build
+  end
+
+  def show
+    @exercises = @day.exercises.order(:created_at)
   end
 
   def create

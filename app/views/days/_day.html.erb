@@ -1,6 +1,6 @@
 <%= turbo_frame_tag day do %>
   <div class="flex justify-between border shadow-md mb-4 py-3 px-5 items-center rounded-lg">
-    <h1 class="text-4xl font-bold w-full text-center"><%= day.title %></h1>
+    <h1 class="text-4xl font-bold w-full text-center"><%= link_to day.title, workout_day_path(workout, day), data: { turbo_frame: "_top" } %></h1>
     <div class="flex gap-2">
       <%= button_to workout_day_path(workout, day), method: :delete,  data: { turbo_confirm: "Are you sure?" } ,class: "bg-gray-200 py-2 px-3 rounded-md hover:bg-gray-300" do %>
         <i class="fa-regular fa-trash-can fa-xl"></i>
