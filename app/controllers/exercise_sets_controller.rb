@@ -2,6 +2,7 @@ class ExerciseSetsController < ApplicationController
   before_action :set_workout
   before_action :set_day
   before_action :set_exercise
+  before_action :set_exercise_set, only: %i[edit update destroy]
 
   def new
     @exercise_set = @exercise.exercise_sets.build
@@ -15,6 +16,22 @@ class ExerciseSetsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit; end
+
+  def update
+    if @exercise_set.update(exercise_set_params)
+      redirect_to workout_day_path(@workout, @day), notice: 'Set was successfully updated.'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @exercise_set.destroy
+
+    redirect_to workout_day_path(@workout, @day), notice: 'Set was successfully destroyed.'
   end
 
   private
@@ -33,5 +50,9 @@ class ExerciseSetsController < ApplicationController
 
   def set_exercise
     @exercise = @day.exercises.find(params[:exercise_id])
+  end
+
+  def set_exercise_set
+    @exercise_set = @exercise.exercise_sets.find(params[:id])
   end
 end

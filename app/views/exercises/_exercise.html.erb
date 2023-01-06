@@ -12,13 +12,15 @@
     </div>
   </div>
   <div class="border shadow-md rounded-lg mb-4 p-4">
-    <div class="flex rounded-md bg-gray-200 p-3 justify-between font-medium">
+    <div class="m-auto grid grid-cols-4 p-3 rounded-md bg-gray-200 font-medium">
       <div>SET</div>
       <div>WEIGHT</div>
-      <div>REPS/DIST</div>
-      <div>COMPLETED</div>
+      <div>REPS/ DIST</div>
+      <div></div>
     </div>
     <%= render exercise.exercise_sets, workout: @workout, day: @day, exercise: exercise %>
-    <%= link_to 'Add Set', [:new, @workout, @day, exercise, :exercise_set], data: { turbo_frame: "_top" } %>
+    <div class="border border-dashed p-6 border-gray-400 text-center rounded-md mt-3">
+      <%= link_to 'Add Set', [:new, @workout, @day, exercise, :exercise_set], data: { turbo_frame: "_top" }, class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
+    </div>
   </div>
 <% end %>

@@ -1,0 +1,9 @@
+<%= link_to sanitize("&larr; Back to #{@exercise.title}"), workout_day_path(@workout, @day) %>
+
+<h1>Edit <%= @exercise.title %></h1>
+
+<%= render "form",
+             workout: @workout,
+             day: @day,
+             exercise: @exercise,
+             exercise_set: @exercise_set %>

@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_104407) do
 
   create_table "exercise_sets", force: :cascade do |t|
     t.bigint "exercise_id", null: false
-    t.integer "set_number"
+    t.string "set_number"
     t.string "weight"
     t.string "reps_dist"
     t.boolean "completed", default: false
