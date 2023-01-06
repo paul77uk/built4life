@@ -1,0 +1,6 @@
+<%# Step 1: remove the form from the Quotes#index page %>
+<%= turbo_stream.update Exercise.new, "" %>
+
+  <%= turbo_stream.append "exercises" do %>
+    <%= render @exercise, workout: @workout, day: @day %>
+  <% end %>
