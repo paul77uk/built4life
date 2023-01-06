@@ -1,0 +1,7 @@
+<%= exercise_set.set_number %>
+<%= exercise_set.weight %>
+<%= exercise_set.reps_dist %>
+<%= exercise_set.completed %>
+
+<%= button_to 'Delete', [workout, day, exercise, exercise_set], method: :delete, form: { data: { turbo_frame: "_top" } } %>
+<%= link_to 'Edit', [:edit, workout, day, exercise, exercise_set], data: { turbo_frame: "_top" } %>

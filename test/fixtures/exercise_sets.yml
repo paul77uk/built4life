@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exercise: one
+  set_number: 1
+  weight: MyString
+  reps_dist: MyString
+  completed: false
+
+two:
+  exercise: two
+  set_number: 1
+  weight: MyString
+  reps_dist: MyString
+  completed: false

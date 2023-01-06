@@ -7,7 +7,7 @@ class DaysController < ApplicationController
   end
 
   def show
-    @exercises = @day.exercises.order(:created_at)
+    @exercises = @day.exercises.includes(:exercise_sets).order(:created_at)
   end
 
   def create
