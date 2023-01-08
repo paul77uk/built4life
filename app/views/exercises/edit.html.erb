@@ -1,6 +1,6 @@
 <%= link_to sanitize("&larr; Back to #{@day.title}"), workout_day_path(@workout, @day) %>
 <h1>Edit Exercise</h1>
-<%= turbo_frame_tag @exercise do %>
+<%= turbo_frame_tag dom_id(@exercise, :edit) do %>
   <div class="border shadow-md mb-3 py-3 px-5 rounded-lg w-full">
     <%= form_with(model: [@workout, @day, @exercise]) do |f| %>
       <% if @exercise.errors.any? %>

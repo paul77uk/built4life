@@ -8,5 +8,5 @@
 </div>
 <%= turbo_frame_tag Exercise.new %>
 <%= turbo_frame_tag "exercises" do %>
-  <%= render @exercises %>
+  <%= render @exercises, day: @day %>
 <% end %>

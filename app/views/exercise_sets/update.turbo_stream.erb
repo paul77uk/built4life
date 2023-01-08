@@ -1,0 +1,5 @@
+<%= turbo_stream.replace @exercise_set do %>
+  <%= render @exercise_set, workout: @workout, day: @day, exercise: @exercise %>
+<% end %>
+
+<%# <%= render_turbo_stream_flash_messages %> 

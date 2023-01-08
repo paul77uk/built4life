@@ -12,7 +12,10 @@ class ExerciseSetsController < ApplicationController
     @exercise_set = @exercise.exercise_sets.build(exercise_set_params)
 
     if @exercise_set.save
-      redirect_to workout_day_path(@workout, @day), notice: 'Set was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to workout_day_path(@workout, @day), notice: 'Set was successfully created.' }
+        format.turbo_stream { flash.now[:notice] = 'Set was successfully created.' }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,7 +25,10 @@ class ExerciseSetsController < ApplicationController
 
   def update
     if @exercise_set.update(exercise_set_params)
-      redirect_to workout_day_path(@workout, @day), notice: 'Set was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to workout_day_path(@workout, @day), notice: 'Set was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Set was successfully updated.' }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +37,10 @@ class ExerciseSetsController < ApplicationController
   def destroy
     @exercise_set.destroy
 
-    redirect_to workout_day_path(@workout, @day), notice: 'Set was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to workout_day_path(@workout, @day), notice: 'Set was successfully destroyed.' }
+      format.turbo_stream { flash.now[:notice] = 'Set was successfully destroyed.' }
+    end
   end
 
   private

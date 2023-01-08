@@ -1,43 +1,61 @@
-require "application_system_test_case"
+require 'application_system_test_case'
+require 'test_helper'
 
 class WorkoutsTest < ApplicationSystemTestCase
   setup do
+    sign_in users(:one)
     @workout = workouts(:one)
   end
 
-  test "visiting the index" do
-    visit workouts_url
-    assert_selector "h1", text: "Workouts"
+  test 'visiting the index if signed out' do
+    sign_out users(:one)
+    visit workouts_path
+    assert_selector 'h1', text: 'Welcome back'
+    assert_text 'Sign in'
   end
 
-  test "should create workout" do
-    visit workouts_url
-    click_on "New workout"
-
-    fill_in "Name", with: @workout.name
-    fill_in "User", with: @workout.user_id
-    click_on "Create Workout"
-
-    assert_text "Workout was successfully created"
-    click_on "Back"
+  test 'visiting the index if signed in' do
+    visit workouts_path
+    assert_selector 'h1', text: 'Workouts'
   end
 
-  test "should update Workout" do
-    visit workout_url(@workout)
-    click_on "Edit this workout", match: :first
+  test 'showing a workout' do
+    visit workouts_path
+    click_link @workout.name
 
-    fill_in "Name", with: @workout.name
-    fill_in "User", with: @workout.user_id
-    click_on "Update Workout"
-
-    assert_text "Workout was successfully updated"
-    click_on "Back"
+    assert_selector 'h1', text: @workout.name
   end
 
-  test "should destroy Workout" do
-    visit workout_url(@workout)
-    click_on "Destroy this workout", match: :first
+  test 'should create workout' do
+    visit workouts_path
 
-    assert_text "Workout was successfully destroyed"
+    click_on 'New workout'
+    fill_in 'Name', with: 'Second workout'
+    click_on 'submit'
+
+    assert_selector 'h1', text: 'Workouts'
+    assert_text 'Second workout'
+  end
+
+  test 'should update Workout' do
+    visit workouts_path
+    assert_selector 'h1', text: 'Workouts'
+
+    click_on 'Edit', match: :one
+
+    fill_in 'Name', with: 'Updated Workouts'
+    click_on 'submit'
+
+    assert_text 'Updated Workout'
+  end
+
+  test 'should destroy Workout' do
+    visit workouts_path
+
+    assert_text 'First workout'
+
+    click_on 'destroy_workout', match: :one
+    page.driver.browser.switch_to.alert.accept
+    assert_no_text 'First workout'
   end
 end

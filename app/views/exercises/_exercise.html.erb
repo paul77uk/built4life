@@ -1,4 +1,5 @@
 <%= turbo_frame_tag exercise do %>
+<%= turbo_frame_tag dom_id(exercise, :edit) do %>
   <div class="flex justify-between border shadow-md mb-4 py-3 px-5 items-center rounded-lg">
     <h1 class="text-4xl font-bold w-full text-center"><%=  exercise.title %></h1>
     <div class="flex gap-2">
@@ -11,6 +12,7 @@
       <% end %>
     </div>
   </div>
+  <% end %>
   <div class="border shadow-md rounded-lg mb-4 p-4">
     <div class="m-auto grid grid-cols-4 p-3 rounded-md bg-gray-200 font-medium">
       <div>SET</div>
@@ -18,9 +20,11 @@
       <div>REPS/ DIST</div>
       <div></div>
     </div>
-    <%= render exercise.exercise_sets, workout: @workout, day: @day, exercise: exercise %>
+    <%= turbo_frame_tag nested_dom_id(exercise, "exercise_sets") do %>
+      <%= render exercise.exercise_sets, workout: @workout, day: @day, exercise: exercise %>
+    <% end %>
     <div class="border border-dashed p-6 border-gray-400 text-center rounded-md mt-3">
-      <%= link_to 'Add Set', [:new, @workout, @day, exercise, :exercise_set], data: { turbo_frame: "_top" }, class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
+      <%= link_to 'Add Set', [:new, @workout, @day, exercise, :exercise_set], data: { turbo_frame: nested_dom_id(exercise, ExerciseSet.new) }, class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
     </div>
   </div>
 <% end %>

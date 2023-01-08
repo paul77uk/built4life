@@ -1,33 +1,30 @@
 <%= form_with(model: [workout, day, exercise, exercise_set]) do |f| %>
-  <div class="border shadow-md mb-3 py-3 px-5 rounded-lg w-full">
+  <div class="">
     <% if exercise_set.errors.any? %>
       <div class="bg-red-100 rounded-md mb-3 py-2 text-red-700 px-3">
         <i class="fa-solid fa-triangle-exclamation text-red-700 pr-1"></i>
         <%= exercise_set.errors.full_messages.to_sentence.capitalize %>
       </div>
     <% end %>
-    <div class="flex gap-4">
-      <div class="flex-grow">
+    <div class="grid grid-cols-8 py-3 gap-2">
+      <div class="col-span-2">
         <%= f.text_field :set_number, autofocus: true, placeholder: 'Set number', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
       </div>
-      <div class="flex-grow">
+      <div class="col-span-2">
         <%= f.text_field :weight, autofocus: true, placeholder: 'Weight', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
       </div>
-      <div class="flex-grow">
+      <div class="col-span-3">
         <%= f.text_field :reps_dist, autofocus: true, placeholder: 'Reps/ Distance', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
       </div>
-      <div>
-        <%= link_to workouts_path do %>
+      <div class="gap-2 justify-end col-span-1 flex">
+        <%= link_to workout_day_path(@workout, @day) do %>
           <i class="fa-solid fa-arrow-rotate-left fa-xl bg-gray-200 rounded-md p-3 hover:bg-gray-300"></i>
         <% end %>
-      </div>
-      <div>
-        
-          <%= button_tag type: 'submit', id: 'submit' do %>
-            <i class="fa-solid fa-check text-white bg-green-600 p-3 fa-xl rounded-md hover:bg-green-500"></i>
-          <% end %>
-        
+        <%= button_tag type: 'submit', id: 'submit' do %>
+          <i class="fa-solid fa-check text-white bg-green-600 p-3 fa-xl rounded-md hover:bg-green-500"></i>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 <% end %>

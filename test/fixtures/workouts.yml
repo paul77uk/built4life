@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: First workout
   user: one
 
 two:
-  name: MyString
+  name: Second workout
   user: two
+
+three:
+  name: Third workout
+  user: three
