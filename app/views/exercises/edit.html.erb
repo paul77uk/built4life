@@ -1,29 +1,6 @@
 <%= link_to sanitize("&larr; Back to #{@day.title}"), workout_day_path(@workout, @day) %>
 <h1>Edit Exercise</h1>
+
 <%= turbo_frame_tag dom_id(@exercise, :edit) do %>
-  <div class="border shadow-md mb-3 py-3 px-5 rounded-lg w-full">
-    <%= form_with(model: [@workout, @day, @exercise]) do |f| %>
-      <% if @exercise.errors.any? %>
-        <div class="error-message">
-          <%= @exercise.errors.full_messages.to_sentence.capitalize %>
-        </div>
-      <% end %>
-      <div class="flex gap-4">
-        <div class="flex-grow">
-          <%= f.text_field :title, autofocus: true, placeholder: 'Name of your exercise',
-        id: 'Name', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
-        </div>
-        <div>
-          <%= link_to workout_day_path(@workout, @day) do %>
-            <i class="fa-solid fa-arrow-rotate-left fa-xl bg-gray-200 rounded-md p-3 hover:bg-gray-300"></i>
-          <% end %>
-        </div>
-        <div>
-          <%= button_tag type: 'submit', id: 'submit' do %>
-            <i class="fa-solid fa-check text-white bg-green-600 p-3 fa-xl rounded-md hover:bg-green-500"></i>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render 'form', workout: @workout, day: @day, exercise: @exercise %>
 <% end %>

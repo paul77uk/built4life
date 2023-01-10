@@ -39,7 +39,7 @@ class ExercisesController < ApplicationController
     @exercise.destroy
 
     respond_to do |format|
-      format.html { redirect_to workout_day_path(@workout, @day, @workout), notice: 'Day was successfully destroyed.' }
+      format.html { redirect_to workout_day_path(@workout, @day), notice: 'Day was successfully destroyed.' }
       format.turbo_stream { flash.now[:notice] = 'Day was successfully destroyed.' }
     end
   end

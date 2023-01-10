@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class LineItemDatesTest < ApplicationSystemTestCase
+class DayTest < ApplicationSystemTestCase
   setup do
     sign_in users(:one)
     @workout = workouts(:one)
@@ -20,7 +20,7 @@ class LineItemDatesTest < ApplicationSystemTestCase
     assert_text 'Day 2'
   end
 
-  test 'Updating a line item date' do
+  test 'Updating a day' do
     assert_selector 'h1', text: 'First workout'
 
     within id: dom_id(@day) do
