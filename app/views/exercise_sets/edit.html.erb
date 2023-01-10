@@ -1,5 +1,6 @@
 <%= link_to sanitize("&larr; Back to #{@exercise.title}"), workout_day_path(@workout, @day) %>
 <h1>Edit <%= @exercise.title %></h1>
+
 <%= turbo_frame_tag @exercise_set do %>
   <%= render "form",
              workout: @workout,

@@ -19,11 +19,15 @@
       <div>REPS/ DIST</div>
       <div></div>
     </div>
+
     <%= turbo_frame_tag nested_dom_id(exercise, "exercise_sets") do %>
-      <%= render exercise.exercise_sets, workout: @workout, day: @day, exercise: exercise %>
+      <%= render exercise.exercise_sets, workout: workout, day: day, exercise: exercise %>
     <% end %>
+
+    <%= turbo_frame_tag nested_dom_id(exercise, ExerciseSet.new) %>
+    
     <div class="border border-dashed p-6 border-gray-400 text-center rounded-md mt-3">
-      <%= link_to 'Add Set', [:new, @workout, @day, exercise, :exercise_set], data: { turbo_frame: nested_dom_id(exercise, ExerciseSet.new) }, class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
+      <%= link_to 'Add Set', [:new, workout, day, exercise, :exercise_set], data: { turbo_frame: nested_dom_id(exercise, ExerciseSet.new) }, class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md" %>
     </div>
   </div>
 <% end %>

@@ -1,5 +1,6 @@
 <%= link_to sanitize("&larr; Back to #{@day.title}"), workout_day_path(@workout, @day) %>
 <h1>New set for <%= @exercise.title %></h1>
+
 <%= turbo_frame_tag nested_dom_id(@exercise, ExerciseSet.new) do %>
   <%= render "form",
              workout: @workout,

@@ -7,7 +7,7 @@ class DaysController < ApplicationController
   end
 
   def show
-    @exercises = @day.exercises
+    @exercises = @day.exercises.includes(:exercise_sets)
   end
 
   def create

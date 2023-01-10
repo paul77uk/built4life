@@ -49,12 +49,12 @@ class ExerciseSetsController < ApplicationController
     params.require(:exercise_set).permit(:set_number, :weight, :reps_dist, :completed)
   end
 
-  def set_day
-    @day = @workout.days.find(params[:day_id])
-  end
-
   def set_workout
     @workout = current_user.workouts.find(params[:workout_id])
+  end
+
+  def set_day
+    @day = @workout.days.find(params[:day_id])
   end
 
   def set_exercise
