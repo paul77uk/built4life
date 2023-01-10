@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :workouts do
     resources :days, except: %i[index] do
-      resources :exercises, except: %i[index] do
+      resources :exercises, except: %i[index show] do
         resources :exercise_sets, except: %i[index show] do
         end
       end

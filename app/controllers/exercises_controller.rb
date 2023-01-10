@@ -1,13 +1,11 @@
 class ExercisesController < ApplicationController
   before_action :set_workout
   before_action :set_day
-  before_action :set_exercise, only: %i[edit update destroy show]
+  before_action :set_exercise, only: %i[edit update destroy]
 
   def new
     @exercise = @day.exercises.build
   end
-
-  def show; end
 
   def create
     @exercise = @day.exercises.build(exercise_params)

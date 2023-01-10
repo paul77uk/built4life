@@ -6,11 +6,12 @@
 #
 one:
   email: firstemail@example.com
-# column: value
-#
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'firstpassword') %>
+
 two:
   email: secondemail@example.com
-# column: value
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'secondpassword') %>
 
 three:
   email: thirdemail@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'thirdpassword') %>

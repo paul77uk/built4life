@@ -3,11 +3,11 @@ class WorkoutsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @workouts = Workout.where(user_id: current_user.id).order(:created_at)
+    @workouts = current_user.workouts
   end
 
   def show
-    @days = @workout.days.order(:created_at)
+    @days = @workout.days
   end
 
   def new
@@ -15,8 +15,7 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    @workout = Workout.new(workout_params)
-    @workout.user_id = current_user.id
+    @workout = current_user.workouts.build(workout_params)
 
     if @workout.save
       respond_to do |format|
