@@ -1,4 +1,5 @@
 require 'application_system_test_case'
+require 'test_helper'
 
 class DayTest < ApplicationSystemTestCase
   setup do

@@ -4,10 +4,10 @@
     <div><%= exercise_set.weight %></div>
     <div><%= exercise_set.reps_dist %></div>
     <div class="flex gap-2 justify-end">
-      <%= button_to [workout, day, exercise, exercise_set], method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "bg-gray-200 py-2 px-3 rounded-md hover:bg-gray-300" do %>
+      <%= button_to [workout, day, exercise, exercise_set], method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, id: 'delete', class: "bg-gray-200 py-2 px-3 rounded-md hover:bg-gray-300" do %>
         <i class="fa-regular fa-trash-can fa-xl"></i>
       <% end %>
-      <%= link_to [:edit, workout, day, exercise, exercise_set], class: "bg-gray-200 py-2 px-3 rounded-md hover:bg-gray-300" do %>
+      <%= link_to [:edit, workout, day, exercise, exercise_set], id: 'edit_set', class: "bg-gray-200 py-2 px-3 rounded-md hover:bg-gray-300" do %>
         <i class="fa-regular fa-pen-to-square fa-xl"></i>
       <% end %>
     </div>

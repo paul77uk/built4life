@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_104407) do
   enable_extension "plpgsql"
 
   create_table "days", force: :cascade do |t|
-    t.integer "workout_id", null: false
+    t.bigint "workout_id", null: false
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_104407) do
   end
 
   create_table "exercise_sets", force: :cascade do |t|
-    t.integer "exercise_id", null: false
+    t.bigint "exercise_id", null: false
     t.string "set_number"
     t.string "weight"
     t.string "reps_dist"
@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_104407) do
   end
 
   create_table "exercises", force: :cascade do |t|
-    t.integer "day_id", null: false
+    t.bigint "day_id", null: false
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_104407) do
 
   create_table "workouts", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_workouts_on_user_id"

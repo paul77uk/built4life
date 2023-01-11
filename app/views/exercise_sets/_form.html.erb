@@ -8,19 +8,19 @@
     <% end %>
     <div class="grid grid-cols-8 py-3 gap-2">
       <div class="col-span-2">
-        <%= f.text_field :set_number, autofocus: true, placeholder: 'Set number', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
+        <%= f.text_field :set_number, autofocus: true, placeholder: 'Set number', id: 'set_number', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
       </div>
       <div class="col-span-2">
-        <%= f.text_field :weight, autofocus: true, placeholder: 'Weight', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
+        <%= f.text_field :weight, autofocus: true, placeholder: 'Weight', id: 'weight', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
       </div>
       <div class="col-span-3">
-        <%= f.text_field :reps_dist, autofocus: true, placeholder: 'Reps/ Distance', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
+        <%= f.text_field :reps_dist, autofocus: true, placeholder: 'Reps/ Distance', id: 'reps_dist', class: "border border-gray-300 rounded-md h-12 w-full focus:border-blue-300 focus:ring-gray-100 focus:border-2 p-3" %>
       </div>
       <div class="gap-2 justify-end col-span-1 flex">
         <%= link_to workout_day_path(workout, day) do %>
           <i class="fa-solid fa-arrow-rotate-left fa-xl bg-gray-200 rounded-md p-3 hover:bg-gray-300"></i>
         <% end %>
-        <%= button_tag type: 'submit', id: 'submit' do %>
+        <%= button_tag type: 'submit', id: 'submit_exercise_set' do %>
           <i class="fa-solid fa-check text-white bg-green-600 p-3 fa-xl rounded-md hover:bg-green-500"></i>
         <% end %>
       </div>
