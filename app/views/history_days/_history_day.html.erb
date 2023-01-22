@@ -1,0 +1,8 @@
+<div class="text-4xl font-bold">
+  <%= history_day.date %>
+</div>
+<% history_day.history_exercises.each do |exercise| %>
+  <div>
+    <%= exercise.title %>
+  </div>
+<% end %>

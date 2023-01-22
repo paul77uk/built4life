@@ -1,7 +1,7 @@
 require 'application_system_test_case'
 require 'test_helper'
 
-class ExerciseSetTest < ApplicationSystemTestCase
+class HistoryTest < ApplicationSystemTestCase
   setup do
     sign_in users(:one)
     @workout = workouts(:one)
@@ -12,7 +12,7 @@ class ExerciseSetTest < ApplicationSystemTestCase
     visit workout_day_path(@workout, @day)
   end
 
-  test 'Creating a new set' do
+  test 'Creating a new history' do
     assert_selector 'h1', text: 'Day 1'
 
     within "##{dom_id(@exercise)}" do

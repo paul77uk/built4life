@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_06_104407) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_151414) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_104407) do
     t.index ["day_id"], name: "index_exercises_on_day_id"
   end
 
+  create_table "history_days", force: :cascade do |t|
+    t.bigint "day_id", null: false
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_history_days_on_day_id"
+  end
+
+  create_table "history_exercises", force: :cascade do |t|
+    t.bigint "history_day_id", null: false
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["history_day_id"], name: "index_history_exercises_on_history_day_id"
+  end
+
+  create_table "history_sets", force: :cascade do |t|
+    t.bigint "history_exercise_id", null: false
+    t.string "exercise_set"
+    t.string "weight"
+    t.string "reps_dist"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["history_exercise_id"], name: "index_history_sets_on_history_exercise_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,5 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_104407) do
   add_foreign_key "days", "workouts"
   add_foreign_key "exercise_sets", "exercises"
   add_foreign_key "exercises", "days"
+  add_foreign_key "history_days", "days"
+  add_foreign_key "history_exercises", "history_days"
+  add_foreign_key "history_sets", "history_exercises"
   add_foreign_key "workouts", "users"
 end

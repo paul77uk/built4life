@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   resources :workouts do
     resources :days, except: %i[index] do
       resources :exercises, except: %i[index show] do
-        resources :exercise_sets, except: %i[index show] do
-        end
+        resources :exercise_sets, except: %i[index show]
       end
     end
 
@@ -15,4 +14,16 @@ Rails.application.routes.draw do
     # Defines the root path route ("/")
     # root "articles#index"
   end
+
+  resources :workouts do
+    resources :days, except: %i[index] do
+      resources :history_days do
+        resources :history_exercises do
+          resources :history_sets
+        end
+      end
+    end
+  end
+
+  get 'history_page', to: 'history_page#history_show_page'
 end
