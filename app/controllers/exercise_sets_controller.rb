@@ -46,7 +46,7 @@ class ExerciseSetsController < ApplicationController
   private
 
   def exercise_set_params
-    params.require(:exercise_set).permit(:set_number, :weight, :reps_dist, :completed)
+    params.require(:exercise_set).permit(:exercise_id, :set_number, :weight, :reps_dist, :completed)
   end
 
   def set_workout
