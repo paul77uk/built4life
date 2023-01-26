@@ -30,7 +30,4 @@ Rails.application.routes.draw do
       resources :history_sets
     end
   end
-
-  resources :history_pages
-  
 end
