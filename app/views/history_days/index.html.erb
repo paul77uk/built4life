@@ -1,5 +1,7 @@
-<%= render @history_days %>
- <%# save the day.id that should be all need.
+<%= turbo_frame_tag "history_days" do %>
+  <%= render @history_days %>
+<% end %>
+<%# save the day.id that should be all need.
  then on save button click.
  history must belong to day to get day index on day show screen.
  then can find day by id.

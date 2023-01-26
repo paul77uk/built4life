@@ -1,5 +1,5 @@
-<div class="border p-3 mt-3 rounded-md shadow-md">
-  <% @history_day.each do |day| %>
+<% @history_days.each do |day| %>
+  <div class="border p-3 mt-3 rounded-md shadow-md">
     <div class="text-2xl font-semibold text-gray-700 pt-2"><%= day.date %></div>
     <% day.history_exercises.each do |exercise| %>
       <div class="text-xl font-semibold text-gray-700 py-2"><%= exercise.title %></div>
@@ -16,5 +16,8 @@
         </div>
       <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+  <div>
+    <%= button_to 'Delete', history_page_path(day), method: :delete,  data: { turbo_confirm: "Are you sure?" } %>
+  </div>
+<% end %>

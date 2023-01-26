@@ -1,12 +1,8 @@
-<%= turbo_frame_tag history_day do %>
+<% @history_days.each do |day| %>
   <div class="border p-3 mt-3 rounded-md shadow-md">
-    <div class="text-2xl font-semibold text-gray-700 pt-2">
-      <%= history_day.date %>
-    </div>
-    <% history_day.history_exercises.each do |exercise| %>
-      <div class="text-xl font-semibold text-gray-700 py-2">
-        <%= exercise.title %>
-      </div>
+    <div class="text-2xl font-semibold text-gray-700 pt-2"><%= day.date %></div>
+    <% day.history_exercises.each do |exercise| %>
+      <div class="text-xl font-semibold text-gray-700 py-2"><%= exercise.title %></div>
       <div class="grid bg-gray-200 border p-2 grid-cols-3 font-semibold text-gray-800 rounded-md">
         <div>SET</div>
         <div>WEIGHT</div>
@@ -21,7 +17,7 @@
       <% end %>
     <% end %>
   </div>
-  <div class="text-center p-3">
-    <%= button_to 'Delete', history_day_path(history_day), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "bg-red-700 hover:bg-red-600 text-white text-lg font-semibold py-3 px-5 rounded-md"  %>
+  <div>
+    <%= button_to 'Delete', history_day_path(day), method: :delete,  data: { turbo_confirm: "Are you sure?" } %>
   </div>
 <% end %>

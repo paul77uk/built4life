@@ -25,5 +25,12 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'history_page', to: 'history_page#history_show_page'
+  resources :history_days do
+    resources :history_exercises do
+      resources :history_sets
+    end
+  end
+
+  resources :history_pages
+  
 end
