@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  history_exercises: one
+  history_exercise: one
   exercise_set: MyString
   weight: MyString
   reps_dist: MyString
 
 two:
-  history_exercises: two
+  history_exercise: two
   exercise_set: MyString
   weight: MyString
   reps_dist: MyString
