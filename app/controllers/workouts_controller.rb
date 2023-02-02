@@ -3,11 +3,11 @@ class WorkoutsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @workouts = current_user.workouts
+    @workouts = current_user.workouts.order(:created_at)
   end
 
   def show
-    @days = @workout.days
+    @days = @workout.days.order(:created_at)
   end
 
   def new

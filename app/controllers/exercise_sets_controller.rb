@@ -27,6 +27,7 @@ class ExerciseSetsController < ApplicationController
     if @exercise_set.update(exercise_set_params)
       respond_to do |format|
         format.html { redirect_to workout_day_path(@workout, @day), notice: 'Set was successfully updated.' }
+
         format.turbo_stream { flash.now[:notice] = 'Set was successfully updated.' }
       end
     else

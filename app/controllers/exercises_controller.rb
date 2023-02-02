@@ -25,9 +25,9 @@ class ExercisesController < ApplicationController
   def update
     if @exercise.update(exercise_params)
       respond_to do |format|
-        format.html do
-          redirect_to workout_day_path(@workout, @day), notice: 'Exercise was successfully updated.'
-        end
+        format.html
+        redirect_to workout_day_path(@workout, @day), notice: 'Exercise was successfully updated.'
+
         format.turbo_stream { flash.now[:notice] = 'Exercise was successfully updated.' }
       end
     else
