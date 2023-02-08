@@ -7,7 +7,10 @@ class HistoryDaysController < ApplicationController
   # before_action :set_exercise_set
 
   def index
-    @history_days = HistoryDay.all
+    workouts = current_user.workouts
+    workout = workouts.first
+    days = workout.days
+    @history_days = HistoryDay.where(day_id: days.first.id)
     @history_exercises = HistoryExercise.all
     @history_sets = HistorySet.all
   end
